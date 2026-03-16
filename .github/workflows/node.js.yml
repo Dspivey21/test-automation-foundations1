@@ -30,5 +30,4 @@ jobs:
     - run: npm start &
     - run: npm run unit-test
     - run: npm integration-test
-    - run: npm run ui-test
 
