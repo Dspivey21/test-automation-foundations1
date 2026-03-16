@@ -1,3 +1,6 @@
+#Workflow Test
+#
+#
 name: Node.js CI
 
 on:
@@ -14,6 +17,7 @@ jobs:
     strategy:
       matrix:
         node-version: [22.x]
+        #See release
 
     steps:
     - uses: actions/checkout@v4
@@ -21,6 +25,10 @@ jobs:
       uses: actions/setup-node@v4
       with:
         node-version: ${{ matrix.node-version }}
-    - run: npm install
+        cache: 'npm'
+    - run: npm ci
+    - run: npm start &
     - run: npm run unit-test
-    - run: npm run integration-test
+    - run: npm integration-test
+    - run: npm run ui-test
+
